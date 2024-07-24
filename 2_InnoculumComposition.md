@@ -19,15 +19,13 @@ We select a single species of each AMF order.
 
 
 
-1. build an index on the transcriptome
+## 1. build an index on the transcriptome
 
           sbatch --partition=pibu_el8 --job-name=SalmonIndexAMF --time=0-24:00:00 --mem-per-cpu=64G --ntasks=12 --cpus-per-task=1 --output=SalmonIndexAMF.out --error=SalmonIndexAMF.error --mail-type=END,FAIL --wrap "module load Salmon/1.4.0-GCC-10.3.0; cd /data/projects/p782_RNA_seq_Argania_spinosa/50_FinalArgan/20_InoculumComposition/01_RefMycGenomes; salmon index -t Acaulospora_colombiana_GCA_910592055.fna -i Acaulospora_colombiana_index;salmon index -t Ambispora_gerdemannii_GCA_910591945.fna -i Ambispora_gerdemannii_index; salmon index -t Claroideoglomus_candidum_GCA_910592215.fna -i Claroideoglomus_candidum_index; salmon index -t Diversispora_epigaea_GCA_003547095.fna -i Diversispora_epigaea_index; salmon index -t Gigaspora_rosea_GCA_003550325.fna -i Gigaspora_rosea_index; salmon index -t Paraglomus_occultum_GCA_910592205.fna -i Paraglomus_occultum_index; salmon index -t Rhizophagus_irregularis_GCA_000439145.fna -i Rhizophagus_irregularis_index"
-
-
+  
                 
                 
-                
-2. Quantify the samples. by mapping the processed RNAseq reads to each AMF reference
+## 2. Quantify the samples. by mapping the processed RNAseq reads to each AMF reference
 
                 #in cluster      
                 for FILE in $(ls *_1_clean.fastq.gz); do echo $FILE; sbatch --partition=pall --job-name=$(echo $FILE | cut -d'_' -f1) --time=02:00:00 --mem-per-cpu=12G --cpus-per-task=1 --output=bbtest.out --error=bbtest.error --mail-type=END,FAIL --wrap "module load UHTS/Analysis/salmon/0.11.2; salmon quant -i /data/projects/p782_RNA_seq_Argania_spinosa/03_SalmonQuantificationAMF/Claroideoglomus_candidum_index -l A -1 $FILE -2 $(echo $FILE | cut -d'_' -f1)_2_clean.fastq.gz -p 8 --validateMappings -o /data/projects/p782_RNA_seq_Argania_spinosa/03_SalmonQuantificationAMF/$(echo $FILE | cut -d'_' -f1)_Claroideoglomus_candidum_quant "   ; sleep 1; done
