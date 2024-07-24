@@ -5,13 +5,13 @@ Quantify if reads map to different AMF genomes.
 
 We select a single species of each AMF order.
 
-1. Glomeraceae: Rhizophagus_irregularis
-2. Acaulosporaceae: Acaulospora_colombiana
-3. Diversisporaceae: Diversispora_epigaea
-4. Gigasporaceae: Gigaspora_rosea
-5. Claroideoglomeraceae: Claroideoglomus_candidum 
-6. Ambisporaceae: Ambispora_gerdemannii
-7. Paraglomeraceae: Paraglomus_occultum
+- Glomeraceae: Rhizophagus_irregularis
+- Acaulosporaceae: Acaulospora_colombiana
+- Diversisporaceae: Diversispora_epigaea
+- Gigasporaceae: Gigaspora_rosea
+- Claroideoglomeraceae: Claroideoglomus_candidum 
+- Ambisporaceae: Ambispora_gerdemannii
+- Paraglomeraceae: Paraglomus_occultum
 
 
 
